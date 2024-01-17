@@ -8,8 +8,8 @@
 #include  <Protocol/DiskIo2.h>
 #include  <Protocol/BlockIo.h>
 #include  <Guid/FileInfo.h>
+#include  "../kernel/frame_buffer_config.hpp"
 
-// #@@range_begin(struct_memory_map)
 struct MemoryMap {
   UINTN buffer_size;
   VOID* buffer;
@@ -18,9 +18,7 @@ struct MemoryMap {
   UINTN descriptor_size;
   UINT32 descriptor_version;
 };
-// #@@range_end(struct_memory_map)
 
-// #@@range_begin(get_memory_map)
 EFI_STATUS GetMemoryMap(struct MemoryMap* map) {
   if (map->buffer == NULL) {
     return EFI_BUFFER_TOO_SMALL;
@@ -295,10 +293,30 @@ EFI_STATUS EFIAPI UefiMain(
   }
 
   UINT64 entry_addr = *(UINT64*)(kernel_base_addr + 24);
+  
+  struct FrameBufferConfig config = {
+    (UINT8*)gop->Mode->FrameBufferBase,
+    gop->Mode->Info->PixelsPerScanLine,
+    gop->Mode->Info->HorizontalResolution,
+    gop->Mode->Info->VerticalResolution,
+    0
+  };
+  switch (gop->Mode->Info->PixelFormat) {
+    case PixelRedGreenBlueReserved8BitPerColor:
+        config.pixel_format = kPixelRGBResv8BitPerColor;
+        break;
+    case PixelBlueGreenRedReserved8BitPerColor:
+        config.pixel_format = kPixelBGRResv8BitPerColor;
+        break;
+    default:
+        Print(L"Unimplemented pixel format: %d\n", gop->Mode->Info->PixelFormat);
+        Halt();
+  }
 
-  typedef void EntryPointType(UINT64, UINT64);
+
+  typedef void EntryPointType(const struct FrameBufferConfig*);
   EntryPointType* entry_point = (EntryPointType*)entry_addr;
-  entry_point(gop->Mode->FrameBufferBase, gop->Mode->FrameBufferSize);
+  entry_point(&config);
 
   Print(L"All done\n");
 
