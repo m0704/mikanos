@@ -3,7 +3,7 @@ OBJS = main.o graphics.o font.o hankaku.o newlib_support.o console.o
 DEPENDS = $(join $(dir $(OBJS)), $(addprefix .,$(notdir $(OBJS:.o=.d))))
 
 CFLAGS		+= -Wall -g --target=x86_64-elf -ffreestanding -mno-red-zone
-CXXFLAGS	+= -Wall -g --target=x86_64-elf -ffreestanding -mno-red-zone -fno-exceptions -fno-rtti -std=c++17 
+CXXFLAGS	+= -Wall -g --target=x86_64-elf -ffreestanding -mno-red-zone -fno-exceptions -fno-rtti -std=c++17
 
 LDFLAGS		+= --entry KernelMain -z norelro --image-base 0x100000 --static
 
