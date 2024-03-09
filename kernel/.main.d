@@ -43,7 +43,7 @@ main.o: main.cpp /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/cstdint \
   usb/endpoint.hpp usb/arraymap.hpp \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/optional \
   usb/classdriver/mouse.hpp usb/classdriver/hid.hpp \
-  usb/classdriver/base.hpp usb/classdriver/keyboard.hpp \
-  usb/xhci/xhci.hpp usb/xhci/registers.hpp register.hpp \
-  usb/xhci/context.hpp usb/xhci/ring.hpp usb/xhci/trb.hpp \
-  usb/xhci/port.hpp usb/xhci/devmgr.hpp usb/xhci/device.hpp
+  usb/classdriver/base.hpp usb/xhci/xhci.hpp usb/xhci/registers.hpp \
+  register.hpp usb/xhci/context.hpp usb/xhci/ring.hpp usb/xhci/trb.hpp \
+  usb/xhci/port.hpp usb/xhci/devmgr.hpp usb/xhci/device.hpp \
+  interrupt.hpp asmfunc.h
