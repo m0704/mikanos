@@ -48,7 +48,7 @@ main.o: main.cpp /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/cstdint \
   register.hpp usb/xhci/context.hpp usb/xhci/ring.hpp usb/xhci/trb.hpp \
   usb/xhci/port.hpp usb/xhci/devmgr.hpp usb/xhci/device.hpp \
   interrupt.hpp x86_descriptor.hpp asmfunc.h queue.hpp segment.hpp \
-  paging.hpp memory_manager.hpp window.hpp layer.hpp \
+  paging.hpp memory_manager.hpp window.hpp frame_buffer.hpp layer.hpp \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/map \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/__tree \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/__node_handle \
