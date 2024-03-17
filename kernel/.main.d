@@ -51,4 +51,5 @@ main.o: main.cpp /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/cstdint \
   paging.hpp memory_manager.hpp window.hpp layer.hpp \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/map \
   /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/__tree \
-  /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/__node_handle
+  /home/sz/osbook/devenv/x86_64-elf/include/c++/v1/__node_handle \
+  timer.hpp
